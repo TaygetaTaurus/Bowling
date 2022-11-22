@@ -26,8 +26,6 @@ public class Pin : MonoBehaviour {
 			return true;
 		}else{
 			return false;
-		}
-		
-		
+		}	
 	}
 }
