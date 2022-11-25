@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Ball))]
-public class DragLaunch : MonoBehaviour {
+public class BallDragLaunch : MonoBehaviour {
 
 	private Vector3 dragStart;
 	private Vector3 dragEnd;
 	private float startTime;
 	private float endTime;
 	private Ball ball;
-	private bool isLaunched;
 	
 	// Use this for initialization
 	void Start () {
 		ball = GetComponent<Ball>();
-		isLaunched = false;
 	}
 
 	public void DragStart(){
@@ -35,7 +33,6 @@ public class DragLaunch : MonoBehaviour {
 			
 			Vector3 launchVelocity = new Vector3(launchSpeedX, 0, launchSpeedZ);
 			ball.Launch(launchVelocity);
-			isLaunched = true;
 		}
 	}
 	

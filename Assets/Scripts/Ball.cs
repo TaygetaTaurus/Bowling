@@ -40,8 +40,8 @@ public class Ball : MonoBehaviour {
 		inPlay = false;
 		transform.position = ballStartPos;
 		rigidBody.useGravity = false;
-		rigidBody.velocity = new Vector3 (0f, 0f, 0f);
-		rigidBody.angularVelocity = new Vector3 (0f, 0f, 0f);
+		rigidBody.velocity = Vector3.zero;
+		rigidBody.angularVelocity = Vector3.zero;
 	}
 }
 
