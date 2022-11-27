@@ -14,24 +14,18 @@ public class Pin : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-	
 	public void RaiseIfStanding(){
 		if (IsStanding()){
 			rigidBody.useGravity = false;
-			rigidBody.angularVelocity = Vector3.zero;
-			rigidBody.velocity = Vector3.zero;
 			transform.Translate(new Vector3(0f, distToRaise, 0f), Space.World);
+			transform.rotation = Quaternion.Euler(270f, 0, 0);
+			rigidBody.velocity = Vector3.zero;
+			rigidBody.angularVelocity = Vector3.zero;
 		}
 	}
 	
 	public void Lower(){
 		transform.Translate(new Vector3(0f, -distToRaise, 0f), Space.World);
-		rigidBody.angularVelocity = Vector3.zero;
-		rigidBody.velocity = Vector3.zero;
 		rigidBody.useGravity = true;
 	}
 	
@@ -39,7 +33,7 @@ public class Pin : MonoBehaviour {
 		Vector3 rotationInEuler = transform.rotation.eulerAngles;
 		
 		float tiltInX = Mathf.Abs(270 - rotationInEuler.x);
-		float tiltInZ = Mathf.Abs(rotationInEuler.z);
+		float tiltInZ = Mathf.Abs(270 - rotationInEuler.z);
 	
 		if (tiltInX < standingThreshold || tiltInZ < standingThreshold){
 			return true;

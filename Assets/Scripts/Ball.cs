@@ -20,11 +20,6 @@ public class Ball : MonoBehaviour {
 		ballStartPos = transform.position;
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
 	public void Launch (Vector3 velocity)
 	{	
@@ -42,6 +37,7 @@ public class Ball : MonoBehaviour {
 		rigidBody.useGravity = false;
 		rigidBody.velocity = Vector3.zero;
 		rigidBody.angularVelocity = Vector3.zero;
+		rigidBody.transform.rotation = Quaternion.identity;
 	}
 }
 
