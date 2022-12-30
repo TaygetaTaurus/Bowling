@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour {
 	private List<int> bowls = new List<int>();
 	private PinSetter pinSetter;
 	private Ball ball;
+	private ScoreDisplay scoreDisplay;
 	
 	// Use this for initialization
 	void Start () {
 		pinSetter = FindObjectOfType<PinSetter>();
 		ball = FindObjectOfType<Ball>();	
+		scoreDisplay = FindObjectOfType<ScoreDisplay>();
 	}
 	
 	// Update is called once per frame
@@ -19,10 +21,19 @@ public class GameManager : MonoBehaviour {
 		
 	}
 	public void Bowl(int pinFall){
-		bowls.Add(pinFall);
-		
-		ActionMaster.Action nextAction =  ActionMaster.NextAction(bowls);
-		pinSetter.PerformAction(nextAction);
-		ball.Reset();
+		try {
+			bowls.Add(pinFall);
+			ball.Reset();
+
+			pinSetter.PerformAction(ActionMasterOld.NextAction(bowls));
+		}catch {
+			Debug.LogWarning ("Something went wrong in Bowl()");
+		}
+
+		try {
+			scoreDisplay.FillRollCard (bowls);
+		}catch {
+			Debug.LogWarning ("FillRollCard failed");
+		}
 	}
 }
