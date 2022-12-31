@@ -8,25 +8,22 @@ public class GameManager : MonoBehaviour {
 	private PinSetter pinSetter;
 	private Ball ball;
 	private ScoreDisplay scoreDisplay;
-	private static bool isBoardsOn = true;
+	private bool isBoardsOn = true;
 	
 	// Use this for initialization
 	void Start () {
 		pinSetter = FindObjectOfType<PinSetter>();
-		ball = FindObjectOfType<Ball>();	
+		ball = FindObjectOfType<Ball>();
 		scoreDisplay = FindObjectOfType<ScoreDisplay>();
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	public void Bowl(int pinFall){
 		try {
 			rolls.Add(pinFall);
 			ball.Reset();
 
-			pinSetter.PerformAction(ActionMasterOld.NextAction(rolls));
+			pinSetter.PerformAction(ActionMaster.NextAction(rolls));
 		}catch {
 			Debug.LogWarning ("Something went wrong in Bowl()");
 		}

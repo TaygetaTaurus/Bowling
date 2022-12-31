@@ -20,7 +20,6 @@ public class Ball : MonoBehaviour {
 		ballStartPos = transform.position;
 		
 	}
-
 	public void Launch (Vector3 velocity)
 	{	
 		inPlay = true;

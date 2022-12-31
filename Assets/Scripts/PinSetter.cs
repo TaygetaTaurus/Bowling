@@ -44,16 +44,16 @@ public class PinSetter : MonoBehaviour {
 		}
 	}
 	
-	public void PerformAction (ActionMasterOld.Action action){
-		if(action == ActionMasterOld.Action.Tidy){
+	public void PerformAction (ActionMaster.Action action){
+		if(action == ActionMaster.Action.Tidy){
 			animator.SetTrigger("tidyTrigger");
-		}else if (action == ActionMasterOld.Action.EndTurn){
+		}else if (action == ActionMaster.Action.EndTurn){
 			animator.SetTrigger("resetTrigger");
 			pinCounter.Reset();
-		}else if (action == ActionMasterOld.Action.Reset){
+		}else if (action == ActionMaster.Action.Reset){
 			animator.SetTrigger("resetTrigger");
 			pinCounter.Reset();
-		}else if (action == ActionMasterOld.Action.EndGame){
+		}else if (action == ActionMaster.Action.EndGame){
 			throw new UnityException("Dont know how to end game xd");
 		}
 	}
